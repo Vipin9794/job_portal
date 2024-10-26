@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import { setAuthUser } from "@/redux/authSlice";
+import { useEffect } from "react";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -52,13 +53,13 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
-  // useEffect(() => {
-  //   if (authUser?.role === "recruiter") {
-  //     navigate("/admin/companies");
-  //   } else if (authUser?.role === "student") {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (authUser?.role === "recruiter") {
+      navigate("/admin/companies");
+    } else if (authUser?.role === "student") {
+      navigate("/");
+    }
+  }, []);
   return (
     <div>
       <Navbar />

@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
+
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
@@ -32,8 +32,17 @@ const CreateJobs = () => {
     position: 0,
     companyId: "",
   });
-  const [loading , setLoading] = useState(false)
+  // const token = useSelector((state) => state.auth.token); // Moved here
+  // console.log("Token:", token); // Debugging line
+    // Retrieve token and log auth state
+    const token = useSelector((state) => state.auth.token);
+    const authState = useSelector((state) => state.auth);
+    console.log("Auth State:", authState);
+    console.log("Token:", token); // Check token
   const { companies } = useSelector((store) => store.company);
+  const loading = useSelector((store) => store.auth.loading); // Use Redux loading state
+  //const [loading , setLoading] = useState(false)
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,12 +60,15 @@ const CreateJobs = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
+      //const token = useSelector((state) => state.auth.token); // Ensure you have the token
+
       const res = await axios.post(
         `${JOB_API_END_POINT}/post`,
         input,
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Add the token here
           },
           withCredentials: true,
         }
@@ -67,7 +79,17 @@ const CreateJobs = () => {
       }
     } catch (error) {
       console.log(error);
+      console.error("Submission Error:", error); // Log the whole error obje
+      
       toast.error(error.response.data.message);
+      if (error.response) {
+        // Access data only if response is defined
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        toast.error(error.response.data?.message || "An error occurred");
+      } else {
+        toast.error("An unexpected error occurred. Please try again.");
+      }
     } finally {
       dispatch(setLoading(false));
     }

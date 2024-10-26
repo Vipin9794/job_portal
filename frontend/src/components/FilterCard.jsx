@@ -1,6 +1,10 @@
 import React from "react";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { useDispatch } from 'react-redux';
+import { setSearchText } from '@/redux/jobSlice';
+import { useState } from "react";
+import { useEffect } from "react";
 
 const filterData = [
   {
@@ -23,6 +27,14 @@ const filterData = [
   },
 ];
 const FilterCard = () => {
+  const [selectedValue, setSelectedValue] = useState('');
+  const dispatch = useDispatch();
+  const handleChange = (value) => {
+      setSelectedValue(value);
+  };
+  useEffect(() => {
+      dispatch(setSearchText(selectedValue));
+  }, [selectedValue])
   return (
     <div className="w-full bg-white p-3 rounded-md">
       <div className="flex items-center justify-between">

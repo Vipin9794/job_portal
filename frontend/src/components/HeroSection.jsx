@@ -1,21 +1,24 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
-// import { useDispatch } from 'react-redux';
-//   import { setSearchText } from '@/redux/jobSlice';
-//   import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+  import { setSearchText } from '@/redux/jobSlice';
+  import { useNavigate } from 'react-router-dom';
+  import { useState } from "react";
+  
   
 
 const HeroSection = () => {
-  // const [query, setQuery] = useState("");
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+ // const [searchText , setSearchText]= useSelector("");
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   
 
-  // const searchJobHandler = () => {
-  //     dispatch(setSearchText(query));
-  //     navigate("/browse");
-  // }
+  const searchJobHandler = () => {
+      dispatch(setSearchText(query));
+      navigate("/browse");
+  }
   return (
     <div className="text-center">
       <div className="text-[#F83002] px-4 py-2 rounded-full bg-gray-100 font-medium">
@@ -37,14 +40,14 @@ const HeroSection = () => {
       <div className="flex w-[40%] shadow-lg border pl-3 border-gray-200 rounded-full items-center gap-4 mx-auto">
         <input
           type="text"
-          //name="query"
-          //value={query}
-         // onChange={(e) => setQuery(e.target.value)}
+          name="query"
+          value={query}
+         onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your dream jobs"
           className="outline-none border-none w-full"
         />
         <Button
-         // onClick={searchJobHandler}
+          onClick={searchJobHandler}
           className="rounded-r-full bg-[#6A38C2]"
         >
           <Search className="h-5 w-5" />

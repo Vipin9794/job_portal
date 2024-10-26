@@ -5,6 +5,8 @@ import { Badge } from "./ui/badge";
 import { Avatar,AvatarImage} from "./ui/avatar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ApplyJobDialog } from "./admin/ApplyJobDialog";
+
 
 
 const Job = ({job}) => {

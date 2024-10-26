@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { setLoading } from "@/redux/authSlice";
 import { useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
+
 const Signup = () => {
   const [input, setInput] = useState({
     fullname: "",
@@ -61,6 +63,13 @@ const Signup = () => {
      } finally {
        dispatch(setLoading(false));
      }
+     useEffect(() => {
+      if (authUser?.role === "recruiter") {
+        navigate("/admin/companies");
+      } else if (authUser?.role === "student") {
+        navigate("/");
+      }
+    }, []);
   };
   return (
     <div>

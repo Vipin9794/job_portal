@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { useParams } from "react-router-dom";
@@ -7,9 +8,13 @@ import { APPLICATION_API_END_POINT } from "./utils/constant";
 import { setSingleJobById } from "@/redux/jobSlice";
 import { useState } from "react";
 import { useEffect } from "react";
+import { toast } from "sonner";
+import { ApplyJobDialog } from "./admin/ApplyJobDialog";
+import { JOB_API_END_POINT } from "./utils/constant";
 
 
 const JobDescription = () => {
+  const [open, setOpen] = useState(false);
   const params = useParams();
   const jobId = params.id;
    const { singleJobById } = useSelector((store) => store.job);
@@ -45,6 +50,13 @@ const JobDescription = () => {
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
+
+      if (error.response) {
+        toast.error(error.response.data?.message || "An error occurred.");
+      } else {
+        toast.error("Network error. Please try again.");
+      }
+  
     }
   };
 
@@ -147,7 +159,7 @@ const JobDescription = () => {
           </span>
         </h1>
       </div>
-      {/* <div><ApplyJobDialog open={open} setOpen={setOpen} /></div> */}
+      <div><ApplyJobDialog open={open} setOpen={setOpen} /></div>
     </div>
   );
 };

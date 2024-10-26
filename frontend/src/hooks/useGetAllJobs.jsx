@@ -9,7 +9,7 @@ import { useState } from "react";
 const useGetAllJobs = () => {
     const dispatch = useDispatch();
 
-    //const { searchText } = useSelector(store => store.job);
+   // const { searchText } = useSelector(store => store.job);
   
 
     useEffect(() => {

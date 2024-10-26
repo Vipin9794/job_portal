@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./shared/Navbar";
+import { useDispatch, useSelector } from 'react-redux'
+import Job from './Job';
+import { motion } from 'framer-motion';
+import useGetAllJobs from '@/hooks/useGetAllJobs';
+import { setSearchText } from '@/redux/jobSlice';
+
 
 const Browse = () => {
+  useGetAllJobs();
+  const { allJobs } = useSelector(store => store.job);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(setSearchText(""));
+    }
+  }, [])
   return (
     <div>
       <Navbar />

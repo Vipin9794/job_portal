@@ -6,15 +6,17 @@ import { Button } from "./ui/button";
 import { Contact } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
-//import AppliedJobTable from "./AppliedJobTable";
+import AppliedJobTable from "./AppliedJobTable";
 import { useState } from "react";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
+import ApplicationTable from "./ApplicationTable";
 
 const Profile = () => {
-  // useGetAppliedJobs();
+   useGetAppliedJobs();
   const [open, setOpen] = useState(false);
   const { authUser } = useSelector((store) => store.auth);
   const navigate = useNavigate();
@@ -93,10 +95,10 @@ const Profile = () => {
           )}
         </div>
       </div>
-      {/* <div className="max-w-4xl mx-auto bg-white rounded-2xl">
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl">
         <h1 className="text-xl font-bold p-5">Applied Jobs</h1>
         <ApplicationTable />
-      </div> */}
+      </div>
       <UpdateProfileDialog open={open} setOpen={setOpen} />
     </div>
   );

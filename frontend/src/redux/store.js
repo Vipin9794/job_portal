@@ -15,7 +15,7 @@ import {
 
 
 
- //import applicationSlice from "./applicationSlice";
+ import applicationSlice from "./applicationSlice";
 
 const persistConfig = {
     key: 'root',
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
     auth: authSlice,
     company:companySlice,
     job:jobSlice,
-    //application:applicationSlice
+    application:applicationSlice
 })
 
  const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -38,7 +38,7 @@ const store = configureStore({
           serializableCheck: {
               ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
           },
-      }), // Add redux-thunk here
+      }), 
 //   reducer: {
 //     auth: authSlice,
 //     job: jobSlice

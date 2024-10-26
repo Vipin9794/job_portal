@@ -6,7 +6,7 @@ const companySlice = createSlice({
         singleCompany: null,
         companies: null,
         
-        // selecteCompanyIdForJobPost: null,
+         selecteCompanyIdForJobPost: null,
          searchCompanyByText: ""
     },
     reducers: {
@@ -17,9 +17,9 @@ const companySlice = createSlice({
         setCompanies: (state, action) => {
             state.companies = action.payload
         },
-        // setSelectCompanyIdForJobPost: (state, action) => {
-        //     state.selecteCompanyIdForJobPost = action.payload;
-        // },
+        setSelectCompanyIdForJobPost: (state, action) => {
+            state.selecteCompanyIdForJobPost = action.payload;
+        },
         setSearchCompanyByText: (state, action) => {
             state.searchCompanyByText = action.payload;
         }
@@ -28,7 +28,7 @@ const companySlice = createSlice({
 export const {
     setCompanies,
     setSingleCompany,
-    // setSelectCompanyIdForJobPost,
+     setSelectCompanyIdForJobPost,
      setSearchCompanyByText
 } = companySlice.actions;
 
