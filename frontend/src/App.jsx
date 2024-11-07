@@ -1,5 +1,4 @@
 import "./App.css";
-import Navbar from "./components/shared/navbar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
