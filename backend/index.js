@@ -12,6 +12,7 @@ dotenv.config({});
 
 const app = express();
 
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -33,6 +34,13 @@ const PORT = process.env.PORT || 3000;
 app.use("/api/v1/application", applicationRoute);
 
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+    });
+});
 
 app.listen(PORT,()=>{
     connectDB();
