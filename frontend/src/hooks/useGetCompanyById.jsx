@@ -22,7 +22,7 @@ const useGetCompanyById = (id) => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get(
-          `${COMPANY_API_END_POINT}/get/${id}`
+          `${COMPANY_API_END_POINT}/get/${companyId}`
         );
         if (res.data.success) {
           
