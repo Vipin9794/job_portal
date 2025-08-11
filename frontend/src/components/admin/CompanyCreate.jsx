@@ -3,7 +3,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import axios from "axios";
-import { COMPANY_API_END_POINT } from '@/utils/constant'
+import { COMPANY_API_END_POINT } from "../utils/constant";
 import { toast } from "sonner";
 import Navbar from "../shared/Navbar";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import { setSingleCompany } from "@/redux/companySlice";
 
 
 import { useNavigate } from "react-router-dom";
-// import { COMPANY_API_END_POINT } from "../utils/constant";
+
 
 
 const CompanyCreate = () => {
