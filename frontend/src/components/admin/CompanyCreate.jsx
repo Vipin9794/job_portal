@@ -24,6 +24,7 @@ const CompanyCreate = () => {
 
   const createNewCompany = async () => {
     try {
+        const token = localStorage.getItem("token");
       const res = await axios.post(
         `${COMPANY_API_END_POINT}/companies/register`,
         { companyName },
