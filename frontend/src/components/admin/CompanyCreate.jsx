@@ -30,6 +30,7 @@ const CompanyCreate = () => {
         {
           headers: {
             "Content-Type": "application/json",
+               Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
         }
