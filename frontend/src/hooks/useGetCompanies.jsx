@@ -11,6 +11,7 @@ const useGetCompanies = () => {
             try {
                 axios.defaults.withCredentials = true;
                 const res = await axios.get(`${COMPANY_API_END_POINT}/companies/get` , {withCredentials: true});
+                console.log(res.data);
                 dispatch(setCompanies(res.data.companies));
             } catch (error) {
                 console.log(error);
