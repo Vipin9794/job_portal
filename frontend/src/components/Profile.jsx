@@ -36,7 +36,7 @@ const Profile = () => {
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
               <AvatarImage
-                src={authUser?.profile.?profilePhoto}
+                src={authUser?.profile?.profilePhoto}
                 alt="profile"
               />
             </Avatar>
