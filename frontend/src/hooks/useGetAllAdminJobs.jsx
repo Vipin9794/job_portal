@@ -12,7 +12,7 @@ const useGetAllAdminJobs = () => {
         const fetchAdminJobs = async () => {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${setSearchText}` , {withCredentials :true});
+                const res = await axios.get(`${JOB_API_END_POINT}/getadminjobs?keyword=${setSearchText}` , {withCredentials :true});
                 if(res.data.success){ 
                     dispatch(setAdminJobs(res.data.jobs));
                 }
