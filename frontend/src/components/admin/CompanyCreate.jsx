@@ -25,7 +25,7 @@ const CompanyCreate = () => {
   const createNewCompany = async () => {
     try {
 
-        console.log("Token find" , token);
+   
       const res = await axios.post(
         `${COMPANY_API_END_POINT}/companies/register`,
         { companyName },
