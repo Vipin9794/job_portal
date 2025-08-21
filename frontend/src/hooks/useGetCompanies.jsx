@@ -10,7 +10,7 @@ const useGetCompanies = () => {
         const fetchCompany = async () => {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get(`${COMPANY_API_END_POINT}/companies/get` , {withCredentials: true});
+                const res = await axios.get(`${COMPANY_API_END_POINT}/companies/` , {withCredentials: true});
                 console.log(res.data);
                 dispatch(setCompanies(res.data.companies));
             } catch (error) {
