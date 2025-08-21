@@ -40,7 +40,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     formData.append("email", input.email);
     formData.append("phoneNumber", input.phoneNumber);
     formData.append("bio", input.bio);
-    formData.append("skills", input.skills);
+    formData.append("skills", input.skills.join(","));
     if (input.file) {
       formData.append("file", input.file);
     }
@@ -135,9 +135,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 </Label>
                 <Input
                   id="skills"
-                   value={input.skills}
+                   value={input.skills.join(",")}
                   name="skills"
-                   onChange={changeHandler}
+                   onChange={(e) => setInput({ ...input, skills: e.target.value.split(",") })} 
                   className="col-span-3"
                 />
               </div>
