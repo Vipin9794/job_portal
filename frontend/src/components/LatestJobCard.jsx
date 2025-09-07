@@ -13,22 +13,18 @@ const LatestJobCard = ({ job }) => {
       <div>
         <h1 className="font-bold text-lg my-2">{job?.title}</h1>
 {/*         <p className="text-sm text-gray-600">{job?.description}</p> */}
-        <p
-          className={`text-sm text-gray-600 ${
-            isTruncated ? "line-clamp-2" : ""
-          }`}
-        >
+        <p className="text-sm text-gray-600 line-clamp-2">
           {job?.description}
         </p>
 
         {/* Show More Button if description > 2 lines */}
-        {job?.description?.length > 100 && ( // approx condition
-          <button
-            onClick={handleShowMore}
+        {job?.description?.length > 120 && (
+          <p
+            
             className="text-blue-600 text-sm font-medium mt-1 hover:underline"
           >
             Show More
-          </button>
+          </p>
         )}
       </div>
       <div className="flex items-center gap-2 mt-4">
