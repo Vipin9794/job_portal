@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const LatestJobCard = ({ job }) => {
