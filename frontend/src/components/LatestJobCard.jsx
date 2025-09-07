@@ -18,13 +18,13 @@ const LatestJobCard = ({ job }) => {
         </p>
 
         {/* Show More Button if description > 2 lines */}
-        {job?.description?.length > 120 && (
-          <p
+        {job?.description?.length > 100 && (
+          <span
             
-            className="text-blue-600 text-sm font-medium mt-1 hover:underline"
+            className="text-blue-600 text-sm line-clamp-2"
           >
             Show More
-          </p>
+          </span>
         )}
       </div>
       <div className="flex items-center gap-2 mt-4">
